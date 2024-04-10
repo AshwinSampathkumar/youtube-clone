@@ -60,9 +60,15 @@ const LiveChat = () => {
           <div className="h-[40px] p-2 m-2">Top Chat</div>
           <hr className="h-[1px] my-2 border-b-[1px] border-0" />
           <div className="h-[470px] overflow-y-scroll overflow-hidden  flex flex-col-reverse">
-            {chatMessages.map((msg: any, i: any) => (
-              <ChatMessage key={i} name={msg.name} message={msg.message} />
-            ))}
+            {chatMessages?.length
+              ? chatMessages.map((msg: any, i: any) => (
+                  <ChatMessage
+                    key={i}
+                    name={msg?.name}
+                    message={msg?.message}
+                  />
+                ))
+              : null}
           </div>
           <hr className="h-[1px] my-2 border-b-[1px] border-0" />
           <form onSubmit={(e) => handleSubmit(e)}>
